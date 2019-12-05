@@ -1,0 +1,137 @@
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card">
+                <div class="card-body">
+                    <div id="principal-title">
+                        ¿QUE ESPERAS PARA CUMPLIR TU SUEÑO?
+                    </div>
+                    <div id="second-title">
+                        Deja tus datos y nos comunicamos contigo
+                    </div>
+                    <br>
+                    <form [formGroup]="reactiveForm" (ngSubmit)="saveUser()">
+                        <div class="row form-group">
+                            <div class="col-md-12">
+                                <input type="text" formControlName="name" placeholder="EnterName" [ngClass]="{
+                                    classFlase: name.pristine || name.valid,
+                                    classTrue: name.invalid
+                                }">
+                                <div *ngIf="name.invalid && (name.dirty || name.touched)">
+                                    <div class="container-error-message" *ngIf="name.errors.required">
+                                        Name is required
+                                    </div>
+                                    <div class="container-error-message" *ngIf="name.errors.pattern">
+                                        Solo debe contener Letras
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row form-group">
+                            <div class="col-md-6">
+                                <select class="custom-select" formControlName="document" [ngClass]="{
+                                    classFlase: document.pristine || document.valid,
+                                    classTrue: document.invalid
+                                }">
+                                    <option value="" disabled selected>Tipo de documento</option>
+                                    <option *ngFor="let documento of documentsFor" [ngValue]="documento">
+                                        {{documento}}
+                                    </option>
+                                </select>
+                                <div class="alert-danger"
+                                    *ngIf="document.invalid && (document.dirty || document.touched)">
+                                    <div class="container-error-message" *ngIf="document.errors.required">
+                                        Seleccione un tipo de documento
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <input type="text" formControlName="numberDocument" placeholder="Numero de documento"
+                                    [ngClass]="{
+                                    classFlase: numberDocument.pristine || numberDocument.valid,
+                                    classTrue: numberDocument.invalid
+                                }">
+                                <div class="alert-danger"
+                                    *ngIf="numberDocument.invalid && (numberDocument.dirty || numberDocument.touched)">
+                                    <div class="container-error-message" *ngIf="numberDocument.errors.required">
+                                        Number is required
+                                    </div>
+                                    <div class="container-error-message" *ngIf="numberDocument.errors.minLength">
+                                        You must writte between 6 and 10 number
+                                    </div>
+                                    <div class="container-error-message" *ngIf="numberDocument.errors.pattern">
+                                        Only number
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row form-group">
+                            <div class="col-md-6">
+                                <select class="custom-select" formControlName="country" [ngClass]="{
+                                    classFlase: country.pristine || country.valid,
+                                    classTrue: country.invalid
+                                }">
+                                    <option value="" disabled selected>Seleccione un pais</option>
+                                    <option *ngFor="let countryOne of countryList" [ngValue]="countryOne.name">
+                                        {{countryOne.name}}
+                                    </option>
+                                </select>
+                                <div class="alert-danger" *ngIf="country.invalid && (country.dirty || country.touched)">
+                                    <div class="container-error-message" *ngIf="country.errors.required">
+                                        Seleccione un pais
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <input type="text" formControlName="phoneNumber" placeholder="Numero de celular"
+                                    [ngClass]="{
+                                    classFlase: phoneNumber.pristine || phoneNumber.valid,
+                                    classTrue: phoneNumber.invalid
+                                }">
+                                <div class="alert-danger"
+                                    *ngIf="phoneNumber.invalid && (phoneNumber.dirty || phoneNumber.touched)">
+                                    <div class="container-error-message" *ngIf="phoneNumber.errors.required">
+                                        Number is required
+                                    </div>
+                                    <div class="container-error-message" *ngIf="(phoneNumber.errors.minLength)">
+                                        You must writte noly 10 number
+                                    </div>
+                                    <div class="container-error-message" *ngIf="phoneNumber.errors.pattern">
+                                        Only number
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row form-group">
+                            <div class="col-md-12">
+                                <input type="text" formControlName="email" placeholder="Ingrese su correo" [ngClass]="{
+                                    classFlase: email.pristine || email.valid,
+                                    classTrue: email.invalid
+                                }">
+                                <div class="alert-danger" *ngIf="email.invalid && (email.dirty || email.touched)">
+                                    <div class="email-error-message" *ngIf="email.errors.required">
+                                        Email is required
+                                    </div>
+                                    <div class="container-error-message" *ngIf="email.errors.pattern">
+                                        It isn't a email
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row form-group">
+                            <div class="col-md-12">
+                                <input type="checkbox" formControlName="terms">
+                                <small>Acepto terminos y condiciones</small>
+                            </div>
+                        </div>
+                        <div class="row form-group">
+                            <div class="col-md-12">
+                                <button type="submit" [disabled]="reactiveForm.invalid">Subir</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

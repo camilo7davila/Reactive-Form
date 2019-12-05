@@ -1,0 +1,66 @@
+$color-blue: #154289;
+$color-red: #942D46;
+$color-grey-1: #E1E1E1;
+$color-grey-2: #707070;
+$color-grey-3: #4A4A4A;
+$color-grey-4: #232323;
+$color-grey-5: #6B3176;
+
+@mixin type-text {
+    height: 30px;
+    width: 100%;
+    border: 1px solid $color-grey-2;
+    border-bottom: 3px solid $color-grey-2;
+    background-color: $color-grey-1 ;
+    border-radius: 2px;
+    font-size: 16px;
+    font-family: arial;
+    padding: 3px;
+}
+
+@mixin type-text-true {
+    height: 30px;
+    width: 100%;
+    border: 1px solid $color-grey-2;
+    border-bottom: 3px solid $color-red;
+    background-color: $color-grey-1;
+    border-radius: 2px;
+    font-size: 16px;
+    font-family: arial;
+    padding: 3px;
+}
+
+.classTrue{
+    @include type-text-true()
+}
+
+.classFlase{
+    @include type-text()
+}
+
+input:focus, select:focus{
+    border-bottom: 3px solid $color-blue;
+}
+
+#principal-title{
+    font-size: 20px;
+    font-family: Arial;
+    font-weight: bold;
+    font-style: italic;
+    text-align: center;
+    color: $color-grey-3;
+}
+#second-title{
+  font-size: 16px;
+  font-family: Arial;
+  font-weight: bold;
+  font-style: italic;
+  text-align: center;
+  color: $color-grey-3;
+}
+
+.card{
+    background-color:rgba(192,192,192,0.6);
+    width: 90%;
+    position:absolute;
+}
